@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard EQS – Rotação Automática</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background-color: #000;
+    }
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+</style>
+
+<script>
+const pages = [
+    "https://lookerstudio.google.com/embed/reporting/23cbb1a7-5b56-4400-8a27-b574feb5c05b/page/oXQfF",
+    "https://lookerstudio.google.com/embed/reporting/23cbb1a7-5b56-4400-8a27-b574feb5c05b/page/p_5fl6lsf3xd",
+    "https://lookerstudio.google.com/embed/reporting/23cbb1a7-5b56-4400-8a27-b574feb5c05b/page/p_shv33ee5xd",
+    "https://lookerstudio.google.com/embed/reporting/23cbb1a7-5b56-4400-8a27-b574feb5c05b/page/p_wmwsk7g3xd",
+    "https://lookerstudio.google.com/embed/reporting/23cbb1a7-5b56-4400-8a27-b574feb5c05b/page/p_xnwuksp5xd"
+];
+
+let currentPage = 0;
+
+function rotate() {
+    document.getElementById("frame").src = pages[currentPage];
+    currentPage = (currentPage + 1) % pages.length;
+}
+
+window.onload = function() {
+    rotate();
+    setInterval(rotate, 30000); // 30 segundo
